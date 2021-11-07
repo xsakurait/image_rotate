@@ -1,0 +1,18 @@
+inputdir = getDirectory("");// ディレクトリを指定
+dirlist = getFileList(inputdir);//画像ファイルを配列取得
+for(i=0;i<dirlist.length;i++){
+    inputdir2 = inputdir + dirlist[i];
+    filelist = getFileList(inputdir2);
+    for(k=0;k<filelist.length;k++){
+        print(filelist[k]);
+        openfile = inputdir2 + filelist[k];
+        open(openfile);
+        for(l=1;l<=359;l=l+5){
+        	run("Rotate... ", "angle=l grid=1 interpolation=Bilinear");
+		saveAs("Jpeg", openfile + "rotate"+l);
+	}
+        
+        close();
+    }
+}
+
